@@ -7,8 +7,8 @@ const app = express()
 
 app.use(bodyParser.json())
 
-
-mongoose.connect("mongodb+srv://AkshayMakwana:Akshay123@cluster0.zmta9.mongodb.net/project2-DB?retryWrites=true&w=majority",)
+// mongodb+srv://ajitkerle:2R693j4kFokYqNZJ@cluster0.djs4ptj.mongodb.net/ajitkerle-DB/project2-DB
+mongoose.connect("mongodb+srv://ajitkerle:2R693j4kFokYqNZJ@cluster0.djs4ptj.mongodb.net/project2-DB?retryWrites=true&w=majority",)
 
     .then(() => console.log("MongoDB is Connected."))
     .catch(err => console.log(err))

@@ -12,8 +12,8 @@ const isValidRequestBody = function (request) {
     return (Object.keys(request).length > 0)
 }
 // ----------- regex validation -------------------------------
-const nameRegex = /^[a-zA-Z\\s]{2,10}$/                 //     will not consider space between
-const fullNameRegex = /^[a-zA-Z ]{2,100}$/               //     consider space between
+const nameRegex = /^[a-zA-Z\s]{2,10}$/                 //     will not consider space between
+const fullNameRegex = /^[a-zA-Z\s]{2,100}$/               //     consider space between
 
 const urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
 
@@ -21,7 +21,7 @@ const urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w
 const createCollege = async function (req, res) {
     try {
         const collegeData = req.body
-        console.log(req.params.college)
+        // console.log(req.params.college)
         const { name, fullName, logoLink } = collegeData
 
         //validation ---- for all above fields---------
@@ -56,11 +56,6 @@ const getCollegeDetails = async function (req, res) {
         const userQuery = req.query  //req query
         //-------validation code ------------------------------------
         if (!isValidRequestBody(userQuery)) return res.status(400).send({ status: false, message: "No college name entered." })
-        // if(!isValidRequestBody(userQuery)){
-        //     const getCollegeName = await collegeModel.find()
-        //     return res.status(200).send({msg:"list of all colleges",data:getCollegeName})
-        // } 
-        //------------------------------
         const collegeName = req.query.collegeName
         const getCollegeName = await collegeModel.findOne({ name: collegeName, isDeleted: false })
 
